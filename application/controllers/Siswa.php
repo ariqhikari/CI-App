@@ -5,7 +5,7 @@ class Siswa extends CI_Controller
     public function __construct()
     {
         parent::__construct();
-        $this->load->model("Siswa_model");
+        $this->load->model(["Siswa_model", "Jurusan_model"]);
         $this->load->helper("form");
         $this->load->library("form_validation");
     }
@@ -22,6 +22,7 @@ class Siswa extends CI_Controller
     {
         $data["judul"] = "Form Tambah Data Siswa";
         $data["active"] = ["", "active", ""];
+        $data["jurusan"] = $this->Jurusan_model->getAllJurusan();
         $this->form_validation->set_rules("nama", "Nama", "required");
         $this->form_validation->set_rules("nis", "NIS", "required");
         $this->form_validation->set_rules("email", "Email", "required");
@@ -40,5 +41,33 @@ class Siswa extends CI_Controller
         $this->Siswa_model->hapusDataSiswa($id);
         $this->session->set_flashdata("flash", "dihapus");
         redirect("siswa");
+    }
+    public function detail($id)
+    {
+        $data["judul"] = "Detail Data Siswa";
+        $data["active"] = ["", "active", ""];
+        $data["siswa"] = $this->Siswa_model->getSiswaById($id);
+        $this->load->view("templates/header", $data);
+        $this->load->view("siswa/detail", $data);
+        $this->load->view("templates/footer");
+    }
+    public function ubah($id)
+    {
+        $data["judul"] = "Form Ubah Data Siswa";
+        $data["active"] = ["", "active", ""];
+        $data["siswa"] = $this->Siswa_model->getSiswaById($id);
+        $data["jurusan"] = $this->Jurusan_model->getAllJurusan();
+        $this->form_validation->set_rules("nama", "Nama", "required");
+        $this->form_validation->set_rules("nis", "NIS", "required");
+        $this->form_validation->set_rules("email", "Email", "required");
+        if ($this->form_validation->run() == FALSE) {
+            $this->load->view("templates/header", $data);
+            $this->load->view("siswa/ubah", $data);
+            $this->load->view("templates/footer");
+        } else {
+            $this->Siswa_model->ubahDataSiswa($id);
+            $this->session->set_flashdata("flash", "diubah");
+            redirect("siswa");
+        }
     }
 }

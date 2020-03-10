@@ -3,24 +3,24 @@
         <div class="col-md-6">
             <div class="card">
                 <div class="card-header">
-                    <h4>Form Tambah Data Siswa</h4>
+                    <h4>Form Ubah Data Siswa</h4>
                 </div>
                 <div class="card-body">
                     <form action="" method="POST">
                         <div class="form-group">
                             <label for="nama">Nama</label>
-                            <input type="text" class="form-control" id="nama" placeholder="Masukkan nama.." name="nama">
+                            <input type="text" class="form-control" id="nama" placeholder="Masukkan nama.." name="nama" value="<?= $siswa["nama"]; ?>">
                             <small class="form-text text-danger"><?= form_error("nama"); ?></small>
                         </div>
                         <div class="form-group">
                             <label for="nis">NIS</label>
-                            <input type="number" class="form-control" id="nis" placeholder="Masukkan nis.." name="nis" min="0">
+                            <input type="number" class="form-control" id="nis" placeholder="Masukkan nis.." name="nis" min="0" value="<?= $siswa["nis"]; ?>">
                             <small class="form-text text-danger"><?= form_error("nis"); ?></small>
 
                         </div>
                         <div class="form-group">
                             <label for="email">Email</label>
-                            <input type="email" class="form-control" id="email" placeholder="Masukkan email.." name="email">
+                            <input type="email" class="form-control" id="email" placeholder="Masukkan email.." name="email" value="<?= $siswa["email"]; ?>">
                             <small class="form-text text-danger"><?= form_error("email"); ?></small>
                         </div>
                         <div class="form-group">
@@ -28,7 +28,11 @@
                             <select class="form-control" id="jurusan" name="jurusan">
                                 <option value="jurusan">Jurusan</option>
                                 <?php foreach ($jurusan as $js) : ?>
-                                    <option value="<?= $js["jurusan"]; ?>"><?= $js["jurusan"]; ?></option>
+                                    <?php if ($js["jurusan"] === $siswa["jurusan"]) : ?>
+                                        <option value="<?= $js["jurusan"]; ?>" selected><?= $js["jurusan"]; ?></option>
+                                    <?php else : ?>
+                                        <option value="<?= $js["jurusan"]; ?>"><?= $js["jurusan"]; ?></option>
+                                    <?php endif; ?>
                                 <?php endforeach; ?>
                             </select>
                         </div>

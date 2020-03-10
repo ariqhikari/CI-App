@@ -19,7 +19,20 @@ class Siswa_model extends CI_Model
     }
     public function hapusDataSiswa($id)
     {
-        $this->db->where('id', $id);
-        $this->db->delete('siswa');
+        $this->db->delete('siswa', ["id" => $id]);
+    }
+    public function getSiswaById($id)
+    {
+        return $this->db->get_where('siswa', ["id" => $id])->row_array();
+    }
+    public function ubahDataSiswa($id)
+    {
+        $data = [
+            'nama' => $this->input->post("nama", true),
+            'nis' => $this->input->post("nis", true),
+            'email' => $this->input->post("email", true),
+            'jurusan' => $this->input->post("jurusan", true),
+        ];
+        $this->db->update('siswa', $data, ["id" => $id]);
     }
 }
