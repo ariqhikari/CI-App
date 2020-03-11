@@ -18,6 +18,18 @@
     </div>
     <div class="row">
         <div class="col-md-6">
+            <form action="<?= base_url() ?>siswa/cari" method="POST">
+                <div class="input-group mb-3">
+                    <input type="text" class="form-control" placeholder="Cari Siswa.." name="keyword" autofocus>
+                    <div class="input-group-append">
+                        <button class="btn btn-outline-primary" type="submit" id="button-addon2">Cari</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-6">
             <h3 class="mb-3">Daftar Siswa</h3>
             <ul class="list-group">
                 <?php foreach ($siswa as $sw) : ?>

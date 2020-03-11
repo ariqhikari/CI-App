@@ -37,7 +37,7 @@
                             </select>
                         </div>
                         <div class="btn-form d-flex justify-content-end">
-                            <a href="<?= base_url(); ?>/siswa" class="btn btn-secondary mr-2">Kembali</a>
+                            <a href="<?= base_url(); ?>siswa" class="btn btn-secondary mr-2">Kembali</a>
                             <button type="submit" class="btn btn-primary">Ubah Data</button>
                         </div>
                     </form>

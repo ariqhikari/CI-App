@@ -70,4 +70,13 @@ class Siswa extends CI_Controller
             redirect("siswa");
         }
     }
+    public function cari()
+    {
+        $data["judul"] = "Daftar Siswa";
+        $data["active"] = ["", "active", ""];
+        $data["siswa"] = $this->Siswa_model->cariDataSiswa($_POST["keyword"]);
+        $this->load->view("templates/header", $data);
+        $this->load->view("siswa/index", $data);
+        $this->load->view("templates/footer");
+    }
 }
