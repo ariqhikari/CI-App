@@ -35,9 +35,13 @@ class Siswa_model extends CI_Model
         ];
         $this->db->update('siswa', $data, ["id" => $id]);
     }
-    public function cariDataSiswa($data)
+    public function cariDataSiswa()
     {
-        $this->db->like('nama', $data);
-        return $this->getAllSiswa();
+        $keyword = $this->input->post("keyword", true);
+        $this->db->like("nama", $keyword);
+        $this->db->or_like("nis", $keyword);
+        $this->db->or_like("email", $keyword);
+        $this->db->or_like("jurusan", $keyword);
+        return $this->db->get("siswa")->result_array();
     }
 }

@@ -14,6 +14,9 @@ class Siswa extends CI_Controller
         $data["judul"] = "Daftar Siswa";
         $data["active"] = ["", "active", ""];
         $data["siswa"] = $this->Siswa_model->getAllSiswa();
+        if ($this->input->post("keyword")) {
+            $data["siswa"] =  $this->Siswa_model->cariDataSiswa();
+        }
         $this->load->view("templates/header", $data);
         $this->load->view("siswa/index", $data);
         $this->load->view("templates/footer");
@@ -69,14 +72,5 @@ class Siswa extends CI_Controller
             $this->session->set_flashdata("flash", "diubah");
             redirect("siswa");
         }
-    }
-    public function cari()
-    {
-        $data["judul"] = "Daftar Siswa";
-        $data["active"] = ["", "active", ""];
-        $data["siswa"] = $this->Siswa_model->cariDataSiswa($_POST["keyword"]);
-        $this->load->view("templates/header", $data);
-        $this->load->view("siswa/index", $data);
-        $this->load->view("templates/footer");
     }
 }
