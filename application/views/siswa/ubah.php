@@ -14,7 +14,7 @@
                         </div>
                         <div class="form-group">
                             <label for="nis">NIS</label>
-                            <input type="number" class="form-control" id="nis" placeholder="Masukkan nis.." name="nis" min="0" value="<?= $siswa["nis"]; ?>">
+                            <input type="number" class="form-control" id="nis" placeholder="Masukkan nis.." name="nis" min="0" maxlength="10" value="<?= $siswa["nis"]; ?>">
                             <small class="form-text text-danger"><?= form_error("nis"); ?></small>
 
                         </div>
