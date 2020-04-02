@@ -9,6 +9,9 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 
+    <!-- Plugin -->
+    <link href="<?= base_url(); ?>assets/css/lightbox.css" rel="stylesheet">
+
     <!-- My CSS -->
     <link rel="stylesheet" href="<?= base_url() ?>assets/css/style.css">
 
@@ -28,7 +31,8 @@
                 <div class="navbar-nav">
                     <a class="nav-item nav-link <?= $active[0]; ?>" href="<?= base_url(); ?>">Home</span></a>
                     <a class="nav-item nav-link <?= $active[1]; ?>" href="<?= base_url();  ?>siswa">Siswa</a>
-                    <a class="nav-item nav-link <?= $active[2]; ?>" href="<?= base_url();  ?>about">About</a>
+                    <a class="nav-item nav-link <?= $active[2]; ?>" href="<?= base_url();  ?>peoples">Peoples</a>
+                    <a class="nav-item nav-link" href="#">About</a>
                 </div>
             </div>
         </div>
